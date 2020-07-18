@@ -35,7 +35,7 @@ class App extends React.Component {
     let displayList = this.props.store.getState().movies.showFavourites ? this.props.store.getState().movies.favourites : this.props.store.getState().movies.list
     return (
       <div className="App">  
-        <Navbar />
+        <Navbar store={this.props.store}/>
         <div className='main'>
           <div className='tabs'>
             <div className={`tab ${this.props.store.getState().movies.showFavourites ? '' : 'active-tabs'}`} onClick={() => this.showFavouriteMovies(false)}>Movies</div>
