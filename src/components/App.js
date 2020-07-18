@@ -19,7 +19,7 @@ class App extends React.Component {
   
 
   isFavourite = (movie) =>{
-    let favourite = this.props.store.getState().favourites;
+    let favourite = this.props.store.getState().movies.favourites;
     let index = favourite.indexOf(movie);
     if(index === -1){
       return false;
@@ -32,14 +32,14 @@ class App extends React.Component {
   }
   
   render(){
-    let displayList = this.props.store.getState().showFavourites ? this.props.store.getState().favourites : this.props.store.getState().list
+    let displayList = this.props.store.getState().movies.showFavourites ? this.props.store.getState().movies.favourites : this.props.store.getState().movies.list
     return (
       <div className="App">  
         <Navbar />
         <div className='main'>
           <div className='tabs'>
-            <div className={`tab ${this.props.store.getState().showFavourites ? '' : 'active-tabs'}`} onClick={() => this.showFavouriteMovies(false)}>Movies</div>
-            <div className={`tab ${this.props.store.getState().showFavourites ? 'active-tabs' : ''}`} onClick={() => this.showFavouriteMovies(true)}>Favourites</div>
+            <div className={`tab ${this.props.store.getState().movies.showFavourites ? '' : 'active-tabs'}`} onClick={() => this.showFavouriteMovies(false)}>Movies</div>
+            <div className={`tab ${this.props.store.getState().movies.showFavourites ? 'active-tabs' : ''}`} onClick={() => this.showFavouriteMovies(true)}>Favourites</div>
           </div>
           <div className='list'>
             {displayList.map( (movie , index) => {
